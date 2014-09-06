@@ -31,6 +31,19 @@ To run service, unpack the built .zip file, cd to it and run:
 
     sh bin/url-shortener -DapplyEvolutions.default=true
 
+Deploy to DigitalOcean with Dokku
+---------------------------------
+To make it work on small instances (512Mb):
+
+    touch /var/swap.img
+    chmod 600 /var/swap.img
+    dd if=/dev/zero of=/var/swap.img bs=1024k count=1000
+    mkswap /var/swap.img
+    swapon /var/swap.img
+    echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
+
+Reserved domain name on master host: oneurl.link
+
 Test API requests
 -----------------
 Authorize:
